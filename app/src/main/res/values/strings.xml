@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Luki</string>
+
+    // app name in the APK
+    <string name="title_activity_maps">Luki App</string>
+    <string name="btn_post">Publicar</string>
+
+    <string name="titleSingUp">Registrate</string>
+    <string name="buttonSingUp">Listo</string>
+    <string name="inputTextName">Nombre</string>
+    <string name="inputTextLastName">Apellido</string>
+    <string name="inputTextPhone">Teléfono</string>
+    <string name="inputTextEmail">Correo</string>
+    <string name="titleSignIn">Ingresar</string>
+    <string name="password">Contraseña</string>
+    <string name="no_estas_registrado">¿No estas registrado?</string>
+    <string name="registrate">Registrate</string>
+
+    <string name="about">Acerca de</string>
+    <string name="exit">Exit</string>
+    <string name="post">Publicar</string>
+</resources>
