@@ -25,6 +25,7 @@
     <string name="parking">Parqueaderos</string>
     <string name="bathRooms">Baños</string>
     <string name="_1000000">1000000</string>
+    <string name="format_1000000">1.000.000,00</string>
     <string name="example_address">Calle 202 #89-45</string>
     <string name="area_m2">Área (m2)</string>
     <string name="bedRooms">Habitaciones</string>
@@ -40,4 +41,12 @@
     <string name="desc">Descripcíon</string>
     <string name="location">Ubicacíon</string>
     <string name="details">Detalles</string>
+
+    <string name="rent">Arriendo</string>
+    <string name="img_contentDesc">Imagenes de la casa o apartamento</string>
+    <string name="barranquilla_alto_prado">Barranquilla, Alto Prado</string>
+    <string name="contact">Contacto</string>
+    <string name="ex_300654321">300654321</string>
+    <string name="example_email">example@example.com</string>
+    <string name="floor">Piso</string>
 </resources>
