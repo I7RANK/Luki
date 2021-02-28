@@ -1,6 +1,411 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="233dp"
+        tools:layout_editor_absoluteY="311dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp">
+
+                <TextView
+                    android:id="@+id/textView_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="@string/price"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/txt_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_radius"
+                    android:drawableStart="@drawable/ic_price"
+                    android:drawableLeft="@drawable/ic_price"
+                    android:ems="10"
+                    android:hint="@string/_1000000"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textSize="26sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_price" />
+
+                <TextView
+                    android:id="@+id/post_title_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="46dp"
+                    android:text="@string/location"
+                    android:textColor="@color/main_purple"
+                    android:textSize="26sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.516"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_price" />
+
+                <TextView
+                    android:id="@+id/textView_state"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="26dp"
+                    android:text="@string/estado"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/post_title_location" />
+
+                <EditText
+                    android:id="@+id/txt_state"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/atlantico"
+                    android:inputType="textPersonName"
+                    android:text="@string/atlantico"
+                    android:textColorLink="@color/main_purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_state" />
+
+                <TextView
+                    android:id="@+id/textView_city"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="@string/city"
+                    android:text="@string/city"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/post_title_location" />
+
+                <EditText
+                    android:id="@+id/txt_city"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/Barranquilla"
+                    android:inputType="textPersonName"
+                    android:text="@string/Barranquilla"
+                    android:textColorLink="@color/main_purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_city" />
+
+                <TextView
+                    android:id="@+id/textView_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="@string/address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_state" />
+
+                <EditText
+                    android:id="@+id/editText_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/example_address"
+                    android:inputType="textPersonName"
+                    android:textColorLink="@color/main_purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_address" />
+
+                <TextView
+                    android:id="@+id/textView_sector"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="26dp"
+                    android:hint="@string/sector"
+                    android:text="@string/sector"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_address" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:hint="@string/select"
+                    android:text=""
+                    android:textColorLink="@color/main_purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_sector" />
+
+                <TextView
+                    android:id="@+id/textView_type"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="@string/sector"
+                    android:text="@string/sector"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_address" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView3"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="@string/select"
+                    android:text=""
+                    android:textColorLink="@color/main_purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_type" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="46dp"
+                    android:text="@string/details"
+                    android:textColor="@color/main_purple"
+                    android:textSize="26sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.518"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+
+                <TextView
+                    android:id="@+id/textView_bedRooms"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/bedRooms"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <EditText
+                    android:id="@+id/txt_bedRooms"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_radius"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/default_zero"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    android:text="@string/default_zero"
+                    app:layout_constraintStart_toEndOf="@+id/textView_bedRooms"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textView_bathRooms"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/bathRooms"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_bedRooms" />
+
+                <EditText
+                    android:id="@+id/txt_bathRooms"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_radius"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/default_zero"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    android:text="@string/default_zero"
+                    app:layout_constraintStart_toEndOf="@+id/textView_bathRooms"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_bedRooms" />
+
+                <TextView
+                    android:id="@+id/textView_parking"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/parking"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_bathRooms" />
+
+                <EditText
+                    android:id="@+id/txt_parking"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_radius"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/default_zero"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    android:text="@string/default_zero"
+                    app:layout_constraintStart_toEndOf="@+id/textView_parking"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_bathRooms" />
+
+                <TextView
+                    android:id="@+id/textView_areaM2"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:text="@string/area_m2"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_areaM2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <EditText
+                    android:id="@+id/txt_areaM2"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_radius"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/default_zero"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    android:text="@string/default_zero"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textView_stratum"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:text="@string/stratum"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_stratum"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_areaM2" />
+
+                <EditText
+                    android:id="@+id/txt_stratum"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_radius"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/default_zero"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    android:text="@string/default_zero"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_areaM2" />
+
+                <TextView
+                    android:id="@+id/textView_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="@string/sector"
+                    android:text="@string/desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_parking" />
+
+                <EditText
+                    android:id="@+id/txt_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_solid"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/example_desc"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_desc" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
