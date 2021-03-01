@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="#fff"
+    android:keepScreenOn="true">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="233dp"
-        tools:layout_editor_absoluteY="311dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,8 +21,33 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp">
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/img_header"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/header" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/title_post_rent"
+                    android:textColor="#ffffff"
+                    android:textSize="28sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView_price"
@@ -28,13 +55,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="26dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:text="@string/price"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                 <EditText
                     android:id="@+id/txt_price"
@@ -67,7 +93,6 @@
                     android:textColor="@color/main_purple"
                     android:textSize="26sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.516"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_price" />
 
@@ -140,7 +165,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_state" />
 
                 <EditText
-                    android:id="@+id/editText_address"
+                    android:id="@+id/txt_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -167,7 +192,7 @@
                     android:hint="@string/sector"
                     android:text="@string/sector"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_address" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_address" />
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
@@ -189,9 +214,9 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:hint="@string/sector"
-                    android:text="@string/sector"
+                    android:text="@string/type"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_address" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_address" />
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView3"
@@ -200,23 +225,58 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:hint="@string/select"
+                    android:isScrollContainer="false"
                     android:text=""
+                    android:textAllCaps="false"
                     android:textColorLink="@color/main_purple"
+                    android:textIsSelectable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_type" />
+
+                <TextView
+                    android:id="@+id/textView_buildingName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="@string/building_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView3" />
+
+                <EditText
+                    android:id="@+id/txt_buildingName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/ex_buildName"
+                    android:inputType="textPersonName"
+                    android:textColorLink="@color/main_purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_buildingName" />
 
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="46dp"
+                    android:layout_marginTop="36dp"
                     android:text="@string/details"
                     android:textColor="@color/main_purple"
                     android:textSize="26sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.518"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_buildingName" />
 
                 <TextView
                     android:id="@+id/textView_bedRooms"
@@ -244,7 +304,6 @@
                     android:hint="@string/default_zero"
                     android:inputType="number"
                     android:singleLine="false"
-                    android:text="@string/default_zero"
                     app:layout_constraintStart_toEndOf="@+id/textView_bedRooms"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -274,7 +333,6 @@
                     android:hint="@string/default_zero"
                     android:inputType="number"
                     android:singleLine="false"
-                    android:text="@string/default_zero"
                     app:layout_constraintStart_toEndOf="@+id/textView_bathRooms"
                     app:layout_constraintTop_toBottomOf="@+id/txt_bedRooms" />
 
@@ -304,7 +362,6 @@
                     android:hint="@string/default_zero"
                     android:inputType="number"
                     android:singleLine="false"
-                    android:text="@string/default_zero"
                     app:layout_constraintStart_toEndOf="@+id/textView_parking"
                     app:layout_constraintTop_toBottomOf="@+id/txt_bathRooms" />
 
@@ -334,27 +391,26 @@
                     android:hint="@string/default_zero"
                     android:inputType="number"
                     android:singleLine="false"
-                    android:text="@string/default_zero"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
                 <TextView
-                    android:id="@+id/textView_stratum"
+                    android:id="@+id/textView_floor"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="12dp"
                     android:layout_marginRight="12dp"
-                    android:text="@string/stratum"
+                    android:text="@string/floor"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/txt_stratum"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_areaM2"
                     app:layout_constraintTop_toBottomOf="@+id/textView_areaM2" />
 
                 <EditText
-                    android:id="@+id/txt_stratum"
+                    android:id="@+id/txt_floor"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:autofillHints=""
@@ -364,9 +420,37 @@
                     android:hint="@string/default_zero"
                     android:inputType="number"
                     android:singleLine="false"
-                    android:text="@string/default_zero"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_areaM2" />
+
+                <TextView
+                    android:id="@+id/textView_stratum"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:text="@string/stratum"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_stratum"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_floor" />
+
+                <EditText
+                    android:id="@+id/txt_stratum"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:autofillHints=""
+                    android:background="@drawable/border_radius"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/default_zero"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_floor" />
 
                 <TextView
                     android:id="@+id/textView_desc"
@@ -404,6 +488,34 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_desc" />
+
+                <Button
+                    android:id="@+id/buttonSignIn"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginBottom="26dp"
+                    android:text="@string/btn_post"
+                    app:backgroundTint="@color/main_purple"
+                    app:cornerRadius="200dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
+
+                <ImageView
+                    android:id="@+id/img_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/img_header"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/bottom" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
