@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.luki">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,8 +15,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Luki" >
-
+        android:theme="@style/Theme.Luki">
+        <activity android:name=".SingUp"
+            android:label="@string/register"
+            android:parentActivityName=".LoginLandLord" />
+        <activity
+            android:name=".LoginLandLord"
+            android:label="@string/login"
+            android:parentActivityName=".MapsActivity" />
+        <activity
+            android:name=".About"
+            android:label="@string/about_tittle"
+            android:parentActivityName=".MapsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

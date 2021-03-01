@@ -1,5 +1,7 @@
 package com.luki
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Geocoder
@@ -10,6 +12,8 @@ import android.os.Looper
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.Switch
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.common.api.ResolvableApiException
@@ -159,6 +163,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * stopLocationUpdates - stop the location updates
+     */
+    private fun stopLocationUpdates() {
+        fusedLocationClient.removeLocationUpdates(locationCallback)
+    }
+
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
@@ -179,6 +191,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 val location = locationResult.locations[0]
                 moveCameraToLocation(location, true)
             }
+        }
+
+        /**
+         * switchBtn: is our switch in the layout
+         *this method allow us to obtain a check status in the button switch
+         * the checks status is a Boolean, true or false
+         */
+        val switchBtn = findViewById<Switch>(R.id.switchMode)
+        switchBtn.setOnCheckedChangeListener { buttonView, isChecked ->
+            // if the Check status is true
+            if (isChecked) {
+                // if the actionbar is not null, hide the bar
+                supportActionBar?.hide()
+                stopLocationUpdates()
+            } else {
+                // if the actionbar is not null, show the bar
+                supportActionBar?.show()
+                startLocationUpdates()
+            }
+        }
+
+        /**
+         * publishBtn: is the ID of the publish button in the map layout
+         * allow the publish button to acces to the login screen
+         */
+        val publishBtn = findViewById<Button>(R.id.publishbtn)
+        publishBtn.setOnClickListener() {
+            val intent = Intent(this, LoginLandLord::class.java)
+            this.startActivity(intent)
         }
     }
 
@@ -348,7 +389,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 finish()
             }
             R.id.about -> {
-                Toast.makeText(this, "esta vaina sirvio", Toast.LENGTH_SHORT).show()
+                // navigate to the about activity
+                val intent = Intent(this, About::class.java)
+                this.startActivity(intent)
+                return true
             }
         }
         return super.onOptionsItemSelected(item)

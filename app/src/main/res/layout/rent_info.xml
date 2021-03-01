@@ -100,7 +100,6 @@
                     android:layout_width="320dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="12dp"
-                    android:padding="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +107,7 @@
 
                     <TextView
                         android:id="@+id/rent_bedrooms"
-                        android:layout_width="130dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/bedRooms"
@@ -120,7 +119,7 @@
 
                     <TextView
                         android:id="@+id/textView13"
-                        android:layout_width="130dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/area_m2"
@@ -132,7 +131,7 @@
 
                     <TextView
                         android:id="@+id/rent_bedrooms2"
-                        android:layout_width="130dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:gravity="center_vertical"
@@ -144,7 +143,7 @@
 
                     <TextView
                         android:id="@+id/textView14"
-                        android:layout_width="130dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:gravity="center_vertical"
@@ -156,7 +155,7 @@
 
                     <TextView
                         android:id="@+id/rent_bedrooms3"
-                        android:layout_width="130dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:gravity="center_vertical"
@@ -168,7 +167,7 @@
 
                     <TextView
                         android:id="@+id/textView15"
-                        android:layout_width="130dp"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:gravity="center_vertical"

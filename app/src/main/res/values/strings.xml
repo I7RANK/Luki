@@ -19,6 +19,21 @@
     <string name="about">Acerca de</string>
     <string name="exit">Exit</string>
     <string name="post">Publicar</string>
+    <string name="about_message">si desea ayuda busquela, sigueme para mas consejos!</string>
+    <string name="previous">previous</string>
+    <string name="about_tittle">About</string>
+    <string name="free_mode">Free mode</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="register">Registro</string>
+    <string name="login">Login</string>
 
     <string name="default_zero">0</string>
     <string name="stratum">Estrato</string>
