@@ -5,19 +5,40 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class LoginLandLord : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.landlord_sign_in)
 
+        val btnSingIn = findViewById<Button>(R.id.buttonSignIn)
         // añadir el acceso a registrarse en luki
         val registerBtn = findViewById<TextView>(R.id.registre)
         registerBtn.setOnClickListener() {
             val intent = Intent(this, SingUp::class.java)
             this.startActivity(intent)
+        }
+
+        btnSingIn.setOnClickListener { checkLogin(it) }
+    }
+
+    private fun checkLogin(btn: View) {
+        val txtEmail = findViewById<EditText>(R.id.editTextEmail_signIn)
+        val txtPass = findViewById<EditText>(R.id.editTextPassword_signIn)
+
+        val email = txtEmail.text.toString()
+        val pass = txtPass.text.toString()
+
+        if (email == "admin" && pass == "admin") {
+            val intent = Intent(this, SingUp::class.java)
+            this.startActivity(intent)
+        } else {
+            Toast.makeText(this, "False", Toast.LENGTH_SHORT).show()
         }
     }
 
