@@ -29,11 +29,11 @@ class SingUp : AppCompatActivity() {
         val txtEmail = findViewById<EditText>(R.id.editTextEmail)
         val txtPass = findViewById<EditText>(R.id.editTextPassword)
 
-        val name = txtName.toString()
-        val lastName = txtLastName.toString()
-        val phone = txtPhone.toString()
-        val email = txtEmail.toString()
-        val pass = txtPass.toString()
+        val name = txtName.text.toString()
+        val lastName = txtLastName.text.toString()
+        val phone = txtPhone.text.toString()
+        val email = txtEmail.text.toString()
+        val pass = txtPass.text.toString()
 
         val dict: MutableMap<String, Any> = mutableMapOf(
                 "name" to name,
