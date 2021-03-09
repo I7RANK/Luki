@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.widget.Button
 
 class PostRent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.post_rent)
 
-        
+        val btnSingUp = findViewById<Button>(R.id.buttonSignIn)
+
+        // dentro de las llaves colocan el llamado a su funcion
+        // btnSingUp.setOnClickListener {  }
     }
 
 
