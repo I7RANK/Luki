@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="600dp">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="674dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -36,7 +36,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView4"
                     android:layout_width="320dp"
                     android:layout_height="180dp"
                     android:layout_marginTop="8dp"
@@ -45,7 +45,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rent_title"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
                 <TextView
                     android:id="@+id/rent_price"
@@ -58,7 +58,7 @@
                     android:textSize="30sp"
                     app:drawableLeftCompat="@drawable/ic_price"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <TextView
                     android:id="@+id/rent_type"
@@ -69,7 +69,7 @@
                     android:layout_marginTop="37dp"
                     android:text="@string/rent"
                     app:layout_constraintStart_toEndOf="@+id/rent_price"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <TextView
                     android:id="@+id/rent_city_sector"
@@ -207,9 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:text="@string/example_email"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rent_cell" />
 
@@ -219,6 +217,7 @@
                     android:layout_height="130dp"
                     android:contentDescription="@string/img_bottom"
                     android:scaleType="fitXY"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:srcCompat="@drawable/bottom" />
 
