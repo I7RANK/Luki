@@ -4,12 +4,61 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import com.google.gson.Gson
+
+val gson = Gson()
 
 class SingUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.landlord_sign_up)
+
+        val btnSingUp = findViewById<Button>(R.id.buttonSignUp)
+
+        btnSingUp.setOnClickListener { checkSingUP(it) }
     }
+
+    private fun checkSingUP(btn: View) {
+        val txtName = findViewById<EditText>(R.id.editTextName)
+        val txtLastName = findViewById<EditText>(R.id.editTextLastName)
+        val txtPhone = findViewById<EditText>(R.id.editTextPhone)
+        val txtEmail = findViewById<EditText>(R.id.editTextEmail)
+        val txtPass = findViewById<EditText>(R.id.editTextPassword)
+
+        val name = txtName.toString()
+        val lastName = txtLastName.toString()
+        val phone = txtPhone.toString()
+        val email = txtEmail.toString()
+        val pass = txtPass.toString()
+
+        val dict: MutableMap<String, Any> = mutableMapOf(
+                "name" to name,
+                "lastname" to lastName,
+                "phone" to phone,
+                "email" to email,
+                "password" to pass
+        )
+
+        /*val dict: MutableMap<String, Any> = HashMap()
+        dict["name"] = name
+        dict["lastname"] = lastName
+        dict["phone"] = phone
+        dict["email"] = email
+        dict["password"] = pass*/
+
+        // to JSON
+        val strJSON = gson.toJson(dict)
+
+        Toast.makeText(this, strJSON, Toast.LENGTH_SHORT).show()
+
+        // SEND POST REQUEST
+    }
+
+
     // ====================== MENU ===================== //
     /**
      * onCreateOptionsMenu - Initialize the contents of the Activity's standard options menu
