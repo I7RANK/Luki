@@ -52,4 +52,10 @@ dependencies {
      * and to can use the FusedLocationProviderClient...
      */
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    // To requests
+    implementation 'com.android.volley:volley:1.1.1'
+
+    // JSON
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
