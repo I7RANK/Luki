@@ -29,6 +29,10 @@
             android:name=".About"
             android:label="@string/about_tittle"
             android:parentActivityName=".MapsActivity" />
+        <activity
+            android:name=".ShowInfo"
+            android:label="ShowInfo"
+            android:parentActivityName=".MapsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

@@ -271,9 +271,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * markTouched - move the camera to the touched marker
      */
     private fun markTouched(marker: Marker) {
-        Toast.makeText(applicationContext,"Clicked ${marker.position.latitude} ${marker.position.longitude}",Toast.LENGTH_SHORT).show()
+        showInformation()
+        // Toast.makeText(applicationContext,"Clicked ${marker.position.latitude} ${marker.position.longitude}",Toast.LENGTH_SHORT).show()
 
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position, 18.0f))
+    }
+
+    /**
+     * showInformation - the idea its to show a window with the info of the apartment
+     * this functions should recive a marker with the adress of the apartment
+     * and display the info of that apartment
+     */
+    private fun showInformation() {
+        //antes de pasar a mostrar la informacion, la pantalla se parte en la mitad donde
+        //sigue mostrando el mapa y el fragment que contiene la informacion
+        val intent = Intent(this, ShowInfo::class.java)
+        startActivity(intent)
     }
 
     /**
