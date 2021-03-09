@@ -1,5 +1,6 @@
 package com.luki
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -7,6 +8,7 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
 
@@ -56,6 +58,10 @@ class SingUp : AppCompatActivity() {
         Toast.makeText(this, strJSON, Toast.LENGTH_SHORT).show()
 
         // SEND POST REQUEST
+
+        // go to post_rent.xml
+        val intent = Intent(this, PostRent::class.java)
+        this.startActivity(intent)
     }
 
 
