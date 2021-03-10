@@ -8,11 +8,7 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import com.google.gson.Gson
-
-val gson = Gson()
 
 class SingUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +40,6 @@ class SingUp : AppCompatActivity() {
                 "email" to email,
                 "password" to pass
         )
-
-        /*val dict: MutableMap<String, Any> = HashMap()
-        dict["name"] = name
-        dict["lastname"] = lastName
-        dict["phone"] = phone
-        dict["email"] = email
-        dict["password"] = pass*/
 
         // to JSON
         val strJSON = gson.toJson(dict)

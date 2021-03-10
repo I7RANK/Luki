@@ -1,6 +1,7 @@
 package com.luki
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -16,6 +17,11 @@ import android.widget.Button
 import android.widget.Switch
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 
@@ -27,6 +33,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
+import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 // GLOBAL VARIABLES
 private const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -45,6 +56,12 @@ private val locationRequest = LocationRequest.create().apply {
     fastestInterval = 500
     priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 }
+
+lateinit var queue: RequestQueue
+
+val gson = Gson()
+
+lateinit var _context: Context
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -174,6 +191,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
+        queue = Volley.newRequestQueue(this)
+
+        _context = this
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
@@ -237,13 +259,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         askPermissionFineLocation()
         createLocationRequest()
+        getRents()
 
-        map.setOnMarkerClickListener { marker ->
+        /*map.setOnMarkerClickListener { marker ->
             markTouched(marker)
             true
-        }
+        }*/
 
-        addAllMarkers()
+        // addAllMarkers()
 
         // activates the zoom buttons
         map.uiSettings.isZoomControlsEnabled = true
@@ -271,7 +294,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * markTouched - move the camera to the touched marker
      */
     private fun markTouched(marker: Marker) {
-        showInformation()
+        // showInformation()
         // Toast.makeText(applicationContext,"Clicked ${marker.position.latitude} ${marker.position.longitude}",Toast.LENGTH_SHORT).show()
 
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position, 18.0f))
@@ -409,5 +432,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    /* ================ REQUESTS =================== */
+    private fun getRents() {
+        // val url = "http://lukiapp-env.eba-hh3egugp.us-east-2.elasticbeanstalk.com/api/v1.0/landlord/1"
+        val url = "http://luki-env-1.eba-2zc72njp.us-east-2.elasticbeanstalk.com/api/v1.0/rents"
+
+        // Request a string response from the provided URL.
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            Response.Listener<String> { response ->
+                var only1 = response.substring(0, 646)
+                only1 = "$only1]}"
+
+                val message = "Response type: ${response::class.simpleName}\n" + only1
+
+                getJSONRents(response.toString())
+            }, Response.ErrorListener {
+                Toast.makeText(this, "FAIL ALL RENTS REQUEST", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest)
+    }
+
+    private fun getJSONRents(res: String) {
+        val mainDict = JSONObject(res)
+
+        val mainList = gson.fromJson(mainDict["apartment"].toString(), Array<Any>::class.java)
+
+        for (i in mainList) {
+            val dict = i as Map<*, *>
+
+            addMark(dict["latitude"] as Double, dict["longitude"] as Double, dict["price"].toString())
+        }
+
+        Toast.makeText(this, "markers added: ${mainList.size}", Toast.LENGTH_SHORT).show()
     }
 }
