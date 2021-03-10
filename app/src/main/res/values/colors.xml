@@ -11,4 +11,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main_purple">#431AD0</color>
+    <color name="grey">#DCDCDC</color>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
 </resources>

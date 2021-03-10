@@ -71,4 +71,7 @@
     <string name="img_header">Header image</string>
     <string name="img_bottom">Bottom image</string>
     <string name="title_post_rent">Publica tu renta</string>
+    <string name="luki">LUKI</string>
+    <string name="lukilogo">LukiLogo</string>
+    <string name="designed_by_target_devs">Designed by Target Devs</string>
 </resources>
