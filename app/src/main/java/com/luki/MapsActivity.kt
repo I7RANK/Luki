@@ -59,7 +59,7 @@ lateinit var queue: RequestQueue
 
 val gson = Gson()
 
-lateinit var _context: Context
+lateinit var Thiscontext: Context
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -140,7 +140,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
 
         // this run when the GPS is active
-        task.addOnSuccessListener { locationSettingsResponse ->
+        task.addOnSuccessListener {
             // All location settings are satisfied. The client can initialize
             // location requests here.
         }
@@ -192,7 +192,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         queue = Volley.newRequestQueue(this)
 
-        _context = this
+        Thiscontext = this
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -219,7 +219,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
          * the checks status is a Boolean, true or false
          */
         val switchBtn = findViewById<Switch>(R.id.switchMode)
-        switchBtn.setOnCheckedChangeListener { buttonView, isChecked ->
+        switchBtn.setOnCheckedChangeListener { _, isChecked ->
             // if the Check status is true
             if (isChecked) {
                 // if the actionbar is not null, hide the bar
@@ -237,7 +237,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
          * allow the publish button to acces to the login screen
          */
         val publishBtn = findViewById<Button>(R.id.publishbtn)
-        publishBtn.setOnClickListener() {
+        publishBtn.setOnClickListener {
             val intent = Intent(this, LoginLandLord::class.java)
             this.startActivity(intent)
         }
@@ -300,9 +300,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * markTouched - move the camera to the touched marker
      */
     private fun markTouched(marker: Marker) {
-        // showInformation()
-        // Toast.makeText(applicationContext,"Clicked ${marker.position.latitude} ${marker.position.longitude}",Toast.LENGTH_SHORT).show()
-
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position, 18.0f))
     }
 
@@ -346,19 +343,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // set again
         mapView.layoutParams = mapParams
         rentConstraint.layoutParams = infoRentParams
-    }
-
-    /**
-     * addAllMarkers - adds all markers in the map
-     */
-    private fun addAllMarkers() {
-        addMark(10.9878, -74.8089, "Barranquilla City")
-        addMark(10.931461, -74.824141, "My House")
-        addMark(10.931456, -74.824302, "Casa del Tata")
-
-        addMark(11.004, -74.806, "Properati: 1")
-        addMark(11.012, -74.834, "Properati: 2")
-        addMark(10.994405, -74.8132697, "Properati: 3")
     }
 
     /**
@@ -479,12 +463,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             Response.Listener<String> { response ->
-                var only1 = response.substring(0, 646)
-                only1 = "$only1]}"
-
-                val message = "Response type: ${response::class.simpleName}\n" + only1
-
                 getJSONRents(response.toString())
+
             }, Response.ErrorListener {
                 Toast.makeText(this, "FAIL ALL RENTS REQUEST", Toast.LENGTH_SHORT).show()
             }
