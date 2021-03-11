@@ -7,15 +7,17 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -24,7 +26,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,9 +35,6 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 // GLOBAL VARIABLES
@@ -261,12 +259,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         createLocationRequest()
         getRents()
 
-        /*map.setOnMarkerClickListener { marker ->
+        val btnCloseRentInfo = findViewById<ImageButton>(R.id.btn_closeRentInfo)
+
+        btnCloseRentInfo.setOnClickListener { closeRentInfo() }
+
+        map.setOnMarkerClickListener { marker ->
             markTouched(marker)
+
+            showRentInfo()
+
             true
-        }*/
+        }
 
         // addAllMarkers()
+        addMark(10.931461, -74.824141, "My House")
 
         // activates the zoom buttons
         map.uiSettings.isZoomControlsEnabled = true
@@ -301,15 +307,45 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     /**
-     * showInformation - the idea its to show a window with the info of the apartment
-     * this functions should recive a marker with the adress of the apartment
-     * and display the info of that apartment
+     * showRentInfo - changes the map and info form size
+     * to show the rent info in this activity
      */
-    private fun showInformation() {
-        //antes de pasar a mostrar la informacion, la pantalla se parte en la mitad donde
-        //sigue mostrando el mapa y el fragment que contiene la informacion
-        val intent = Intent(this, ShowInfo::class.java)
-        startActivity(intent)
+    private fun showRentInfo() {
+        val mapView = findViewById<ConstraintLayout>(R.id.mapConstraint)
+        val rentConstraint = findViewById<ConstraintLayout>(R.id.rentConstraint)
+
+        // set current layout to currentParams like ConstraintLayout.LayoutParams
+        val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
+        val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+
+        // change only percent height
+        mapParams.matchConstraintPercentHeight = 0.35.toFloat()
+        infoRentParams.matchConstraintPercentHeight = 0.65.toFloat()
+
+        // set again
+        mapView.layoutParams = mapParams
+        rentConstraint.layoutParams = infoRentParams
+    }
+
+    /**
+     * closeRentInfo - changes the map and info form size
+     * to close the rent_info form in this activity
+     */
+    private fun closeRentInfo() {
+        val mapView = findViewById<ConstraintLayout>(R.id.mapConstraint)
+        val rentConstraint = findViewById<ConstraintLayout>(R.id.rentConstraint)
+
+        // set current layout to currentParams like ConstraintLayout.LayoutParams
+        val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
+        val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+
+        // change only percent height
+        mapParams.matchConstraintPercentHeight = 1.toFloat()
+        infoRentParams.matchConstraintPercentHeight = 0.toFloat()
+
+        // set again
+        mapView.layoutParams = mapParams
+        rentConstraint.layoutParams = infoRentParams
     }
 
     /**
