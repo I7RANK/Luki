@@ -28,8 +28,8 @@ This APP works on Android 4.1 and above
 No known bugs at this time. 
 
 ## Authors
-Lilibeth Tabares - [Github](https://github.com/LiliTa1762) / [Twitter](https://twitter.com/LilibethTabares)
-Mauricio Contreras - [Github](https://github.com/mauroxcf) / [Twitter](https://twitter.com/MauroJCF)
-Francisco Guzman - [Github](https://github.com/I7RANK) / [Twitter](https://twitter.com/I7RANKI)
+Lilibeth Tabares - [Github](https://github.com/LiliTa1762) / [Twitter](https://twitter.com/LilibethTabares)  
+Mauricio Contreras - [Github](https://github.com/mauroxcf) / [Twitter](https://twitter.com/MauroJCF)  
+Francisco Guzman - [Github](https://github.com/I7RANK) / [Twitter](https://twitter.com/I7RANKI)  
 Jose Parrales - [Github](https://github.com/JParrales) / [Twitter](https://twitter.com/JParrales7)
 
