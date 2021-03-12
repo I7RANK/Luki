@@ -7,15 +7,17 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -24,7 +26,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,9 +35,6 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 // GLOBAL VARIABLES
@@ -61,7 +59,7 @@ lateinit var queue: RequestQueue
 
 val gson = Gson()
 
-lateinit var _context: Context
+lateinit var Thiscontext: Context
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -142,7 +140,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
 
         // this run when the GPS is active
-        task.addOnSuccessListener { locationSettingsResponse ->
+        task.addOnSuccessListener {
             // All location settings are satisfied. The client can initialize
             // location requests here.
         }
@@ -194,7 +192,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         queue = Volley.newRequestQueue(this)
 
-        _context = this
+        Thiscontext = this
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -221,7 +219,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
          * the checks status is a Boolean, true or false
          */
         val switchBtn = findViewById<Switch>(R.id.switchMode)
-        switchBtn.setOnCheckedChangeListener { buttonView, isChecked ->
+        switchBtn.setOnCheckedChangeListener { _, isChecked ->
             // if the Check status is true
             if (isChecked) {
                 // if the actionbar is not null, hide the bar
@@ -239,7 +237,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
          * allow the publish button to acces to the login screen
          */
         val publishBtn = findViewById<Button>(R.id.publishbtn)
-        publishBtn.setOnClickListener() {
+        publishBtn.setOnClickListener {
             val intent = Intent(this, LoginLandLord::class.java)
             this.startActivity(intent)
         }
@@ -261,12 +259,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         createLocationRequest()
         getRents()
 
-        /*map.setOnMarkerClickListener { marker ->
+        val btnCloseRentInfo = findViewById<ImageButton>(R.id.btn_closeRentInfo)
+
+        btnCloseRentInfo.setOnClickListener { closeRentInfo() }
+
+        map.setOnMarkerClickListener { marker ->
             markTouched(marker)
+
+            showRentInfo()
+
             true
-        }*/
+        }
 
         // addAllMarkers()
+        addMark(10.931461, -74.824141, "My House")
 
         // activates the zoom buttons
         map.uiSettings.isZoomControlsEnabled = true
@@ -294,35 +300,49 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * markTouched - move the camera to the touched marker
      */
     private fun markTouched(marker: Marker) {
-        // showInformation()
-        // Toast.makeText(applicationContext,"Clicked ${marker.position.latitude} ${marker.position.longitude}",Toast.LENGTH_SHORT).show()
-
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position, 18.0f))
     }
 
     /**
-     * showInformation - the idea its to show a window with the info of the apartment
-     * this functions should recive a marker with the adress of the apartment
-     * and display the info of that apartment
+     * showRentInfo - changes the map and info form size
+     * to show the rent info in this activity
      */
-    private fun showInformation() {
-        //antes de pasar a mostrar la informacion, la pantalla se parte en la mitad donde
-        //sigue mostrando el mapa y el fragment que contiene la informacion
-        val intent = Intent(this, ShowInfo::class.java)
-        startActivity(intent)
+    private fun showRentInfo() {
+        val mapView = findViewById<ConstraintLayout>(R.id.mapConstraint)
+        val rentConstraint = findViewById<ConstraintLayout>(R.id.rentConstraint)
+
+        // set current layout to currentParams like ConstraintLayout.LayoutParams
+        val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
+        val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+
+        // change only percent height
+        mapParams.matchConstraintPercentHeight = 0.35.toFloat()
+        infoRentParams.matchConstraintPercentHeight = 0.65.toFloat()
+
+        // set again
+        mapView.layoutParams = mapParams
+        rentConstraint.layoutParams = infoRentParams
     }
 
     /**
-     * addAllMarkers - adds all markers in the map
+     * closeRentInfo - changes the map and info form size
+     * to close the rent_info form in this activity
      */
-    private fun addAllMarkers() {
-        addMark(10.9878, -74.8089, "Barranquilla City")
-        addMark(10.931461, -74.824141, "My House")
-        addMark(10.931456, -74.824302, "Casa del Tata")
+    private fun closeRentInfo() {
+        val mapView = findViewById<ConstraintLayout>(R.id.mapConstraint)
+        val rentConstraint = findViewById<ConstraintLayout>(R.id.rentConstraint)
 
-        addMark(11.004, -74.806, "Properati: 1")
-        addMark(11.012, -74.834, "Properati: 2")
-        addMark(10.994405, -74.8132697, "Properati: 3")
+        // set current layout to currentParams like ConstraintLayout.LayoutParams
+        val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
+        val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+
+        // change only percent height
+        mapParams.matchConstraintPercentHeight = 1.toFloat()
+        infoRentParams.matchConstraintPercentHeight = 0.toFloat()
+
+        // set again
+        mapView.layoutParams = mapParams
+        rentConstraint.layoutParams = infoRentParams
     }
 
     /**
@@ -443,12 +463,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             Response.Listener<String> { response ->
-                var only1 = response.substring(0, 646)
-                only1 = "$only1]}"
-
-                val message = "Response type: ${response::class.simpleName}\n" + only1
-
                 getJSONRents(response.toString())
+
             }, Response.ErrorListener {
                 Toast.makeText(this, "FAIL ALL RENTS REQUEST", Toast.LENGTH_SHORT).show()
             }
