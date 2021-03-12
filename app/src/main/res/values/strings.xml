@@ -11,7 +11,7 @@
     <string name="inputTextLastName">Apellido</string>
     <string name="inputTextPhone">Teléfono</string>
     <string name="inputTextEmail">Correo</string>
-    <string name="titleSignIn">Ingresar</string>
+    <string name="titleSignIn">Bienvenido a Luki</string>
     <string name="password">Contraseña</string>
     <string name="no_estas_registrado">¿No estas registrado?</string>
     <string name="registrate">Registrate</string>
