@@ -1,5 +1,6 @@
 package com.luki
 
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -261,12 +262,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val btnCloseRentInfo = findViewById<ImageButton>(R.id.btn_closeRentInfo)
 
-        btnCloseRentInfo.setOnClickListener { closeRentInfo() }
+        btnCloseRentInfo.setOnClickListener { showRentInfo(false) }
 
         map.setOnMarkerClickListener { marker ->
             markTouched(marker)
 
-            showRentInfo()
+            showRentInfo(true)
 
             true
         }
@@ -304,45 +305,67 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     /**
-     * showRentInfo - changes the map and info form size
-     * to show the rent info in this activity
+     * showRentInfo - changes the map and rentInfo form size
+     *
+     *  [show]: define if show or hide rentInfo form
+     *  true to show
+     *  false to hide
      */
-    private fun showRentInfo() {
+    private fun showRentInfo(show: Boolean) {
         val mapView = findViewById<ConstraintLayout>(R.id.mapConstraint)
         val rentConstraint = findViewById<ConstraintLayout>(R.id.rentConstraint)
 
-        // set current layout to currentParams like ConstraintLayout.LayoutParams
-        val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
-        val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+        var mapValueStart = 1.0f
+        var mapValueEnd = 0.35f
+        var rentInfoValueStart = 0f
+        var rentInfoValueEnd = 0.65f
 
-        // change only percent height
-        mapParams.matchConstraintPercentHeight = 0.35.toFloat()
-        infoRentParams.matchConstraintPercentHeight = 0.65.toFloat()
+        if (!show) {
+            mapValueStart = 0.35f
+            mapValueEnd = 1.0f
+            rentInfoValueStart = 0.65f
+            rentInfoValueEnd = 0f
+        }
 
-        // set again
-        mapView.layoutParams = mapParams
-        rentConstraint.layoutParams = infoRentParams
-    }
+        // Initialize the animation values.
+        val mapValueAnimator = ValueAnimator.ofFloat(mapValueStart, mapValueEnd)
+        val rentInfoValueAnimator = ValueAnimator.ofFloat(rentInfoValueStart, rentInfoValueEnd)
+        mapValueAnimator.duration = 300
+        rentInfoValueAnimator.duration = 300
 
-    /**
-     * closeRentInfo - changes the map and info form size
-     * to close the rent_info form in this activity
-     */
-    private fun closeRentInfo() {
-        val mapView = findViewById<ConstraintLayout>(R.id.mapConstraint)
-        val rentConstraint = findViewById<ConstraintLayout>(R.id.rentConstraint)
+        // change the size each time that the value change
+        mapValueAnimator.addUpdateListener {
+            val animatedValue = mapValueAnimator.animatedValue as Float
+            val layoutParams = mapView.layoutParams as ConstraintLayout.LayoutParams
+            layoutParams.matchConstraintPercentHeight = animatedValue
+            mapView.layoutParams = layoutParams
+        }
 
-        // set current layout to currentParams like ConstraintLayout.LayoutParams
-        val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
-        val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+        rentInfoValueAnimator.addUpdateListener {
+            val animatedValue = rentInfoValueAnimator.animatedValue as Float
+            val layoutParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+            layoutParams.matchConstraintPercentHeight = animatedValue
+            rentConstraint.layoutParams = layoutParams
+        }
 
-        // change only percent height
-        mapParams.matchConstraintPercentHeight = 1.toFloat()
-        infoRentParams.matchConstraintPercentHeight = 0.toFloat()
+        mapValueAnimator.start()
+        rentInfoValueAnimator.start()
 
-        // set again
-        mapView.layoutParams = mapParams
-        rentConstraint.layoutParams = infoRentParams
+        /**
+         * Without animation
+         *
+         * // set current layout to currentParams like ConstraintLayout.LayoutParams
+         * val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
+         * val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
+         *
+         * // change only percent height
+         * mapParams.matchConstraintPercentHeight = 0.35.toFloat()
+         * infoRentParams.matchConstraintPercentHeight = 0.65.toFloat()
+         *
+         * // set again
+         * mapView.layoutParams = mapParams
+         * rentConstraint.layoutParams = infoRentParams
+         */
     }
 
     /**
