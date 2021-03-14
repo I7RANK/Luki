@@ -17,9 +17,11 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -35,6 +37,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
+import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import org.json.JSONObject
 
@@ -186,6 +189,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
+    //
+    lateinit var toggle: ActionBarDrawerToggle
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -241,6 +247,44 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         publishBtn.setOnClickListener {
             val intent = Intent(this, LoginLandLord::class.java)
             this.startActivity(intent)
+        }
+
+        // create the instance of drawerLayout and navView
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_Layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+
+        //connect the drawer with our Activity
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        // the toggle its ready to use
+        toggle.syncState()
+
+        //
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        /**
+         * navView listener - respond to the option clicked in the navigation bar
+         */
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.itemHistorial -> Toast.makeText(this,
+                    "Historial del usuario", Toast.LENGTH_SHORT).show()
+
+                R.id.itemConfiguration -> Toast.makeText(this,
+                    "Configuracion de aplicacion", Toast.LENGTH_SHORT).show()
+
+                R.id.itemHelp -> Toast.makeText(this,
+                    "Ayuda de la App", Toast.LENGTH_SHORT).show()
+
+                R.id.itemAbout -> {
+                    // navigate to the about activity
+                    val intent = Intent(this, About::class.java)
+                    this.startActivity(intent)
+                }
+
+                R.id.itemExit -> finish()
+            }
+            true
         }
     }
 
@@ -451,28 +495,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu_main, menu)
+        inflater.inflate(R.menu.nav_drawer_menu, menu)
         return true
     }
 
     /**
      * onOptionsItemSelected - this functions allow os to atc on menu items
-     * exit - finish the app
+     * the toggle object is in sync with the menu options of the nav bar
      *
      * [item]: the item selected
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // when touched an item gets his id
-        when (item.itemId) {
-            R.id.exit -> {
-                finish()
-            }
-            R.id.about -> {
-                // navigate to the about activity
-                val intent = Intent(this, About::class.java)
-                this.startActivity(intent)
-                return true
-            }
+        if(toggle.onOptionsItemSelected(item)) {
+            return true
         }
         return super.onOptionsItemSelected(item)
     }

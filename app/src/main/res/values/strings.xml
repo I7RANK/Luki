@@ -19,10 +19,13 @@
     <string name="about">Acerca de</string>
     <string name="exit">Exit</string>
     <string name="post">Publicar</string>
-    <string name="about_message">si desea ayuda busquela, sigueme para mas consejos!</string>
+    <string name="about_message">
+        Luki es una app movil diseñada por participantes de holbertonschool en su ultimo trimestre,
+        esperamos que la disfrutes mucho!!
+    </string>
     <string name="previous">previous</string>
     <string name="about_tittle">About</string>
-    <string name="free_mode">Free mode</string>
+    <string name="free_mode">Modo Libre</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -74,4 +77,10 @@
     <string name="luki">LUKI</string>
     <string name="lukilogo">LukiLogo</string>
     <string name="designed_by_target_devs">Designed by Target Devs</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Betty Holberton</string>
+    <string name="nav_header_subtitle">betty_holberton@holbertonschool.com</string>
 </resources>
