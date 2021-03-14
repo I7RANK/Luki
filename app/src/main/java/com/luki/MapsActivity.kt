@@ -249,6 +249,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             this.startActivity(intent)
         }
 
+        /**
+         * Prepations for the navigation drawer
+         */
         // create the instance of drawerLayout and navView
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_Layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -492,13 +495,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * this function doesn't mutate the option selected
      *
      * [menu]: the menu object
-     */
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.nav_drawer_menu, menu)
         return true
     }
-
+     */
     /**
      * onOptionsItemSelected - this functions allow os to atc on menu items
      * the toggle object is in sync with the menu options of the nav bar
