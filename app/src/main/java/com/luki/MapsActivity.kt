@@ -10,8 +10,6 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
@@ -25,7 +23,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.common.api.ResolvableApiException
@@ -192,8 +189,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
-    //
-    lateinit var toggle: ActionBarDrawerToggle
+    // To create the ActionBarDrawerToggle instance
+    private lateinit var toggle: ActionBarDrawerToggle
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -309,9 +306,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayout.closeDrawer(GravityCompat.START)
             } else {
-                drawerLayout.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(GravityCompat.START)
             }
         }
     }
@@ -348,7 +345,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         addMark(10.931461, -74.824141, "My House")
 
         // activates the zoom buttons
-        map.uiSettings.isZoomControlsEnabled = true
+        // map.uiSettings.isZoomControlsEnabled = true
 
         // brujula
         map.uiSettings.isCompassEnabled = true
