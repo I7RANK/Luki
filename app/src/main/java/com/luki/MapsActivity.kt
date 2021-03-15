@@ -21,6 +21,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -37,6 +38,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import org.json.JSONObject
@@ -232,10 +234,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 // if the actionbar is not null, hide the bar
                 supportActionBar?.hide()
                 stopLocationUpdates()
+                Toast.makeText(this,
+                        "ahora puedes desplazarte en el mapa con libertad!",
+                        Toast.LENGTH_SHORT).show()
             } else {
                 // if the actionbar is not null, show the bar
-                supportActionBar?.show()
+                //supportActionBar?.show()
                 startLocationUpdates()
+                Toast.makeText(this,
+                        "Has regresado al modo de localizacion en tiempo real constante!",
+                        Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -256,17 +264,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_Layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
 
-        //connect the drawer with our Activity
+        //Pass the ActionBarToggle action into the drawerListener
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         // the toggle its ready to use
         toggle.syncState()
 
-        //
+        // Display the hamburger icon to launch the drawer
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+        //hide the action bar
+        supportActionBar?.hide()
 
         /**
-         * navView listener - respond to the option clicked in the navigation bar
+         * Call setNavigationItemSelectedListener on the NavigationView
+         * to detect when items are clicked
          */
         navView.setNavigationItemSelectedListener {
             when(it.itemId) {
@@ -288,6 +300,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 R.id.itemExit -> finish()
             }
             true
+        }
+
+        /**
+         * FloatingActionButton is gonna handle the navigation bar
+         */
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
         }
     }
 
@@ -502,6 +526,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return true
     }
      */
+
     /**
      * onOptionsItemSelected - this functions allow os to atc on menu items
      * the toggle object is in sync with the menu options of the nav bar
@@ -523,12 +548,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Request a string response from the provided URL.
         val stringRequest = StringRequest(
             Request.Method.GET, url,
-            Response.Listener<String> { response ->
-                getJSONRents(response.toString())
+                { response ->
+                    getJSONRents(response.toString())
 
-            }, Response.ErrorListener {
-                Toast.makeText(this, "FAIL ALL RENTS REQUEST", Toast.LENGTH_SHORT).show()
-            }
+                }, {
+                    Toast.makeText(this, "FAIL ALL RENTS REQUEST", Toast.LENGTH_SHORT).show()
+                }
         )
 
         // Add the request to the RequestQueue.

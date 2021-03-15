@@ -48,8 +48,8 @@
                 android:id="@+id/switchMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="56dp"
-                android:layout_marginLeft="56dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginLeft="84dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/border_radius"
                 android:paddingLeft="6dp"
@@ -300,6 +300,19 @@
             </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/menu_options"
+            android:src="@drawable/ic_baseline_menu_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxImageSize="24dp"
+            app:fabSize="mini"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
