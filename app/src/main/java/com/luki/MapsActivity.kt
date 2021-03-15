@@ -233,7 +233,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 supportActionBar?.hide()
                 stopLocationUpdates()
                 Toast.makeText(this,
-                        "ahora puedes desplazarte en el mapa con libertad!",
+                        "Ahora puedes desplazarte en el mapa con libertad!",
                         Toast.LENGTH_SHORT).show()
             } else {
                 // if the actionbar is not null, show the bar
