@@ -34,6 +34,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -490,7 +491,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun addMark(lat: Double, lon: Double, tit: String = ""): Marker {
         val newPlace = LatLng(lat, lon)
 
-        return map.addMarker(MarkerOptions().position(newPlace).title(tit))
+        return map.addMarker(MarkerOptions().position(newPlace).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)))
     }
 
     /**
