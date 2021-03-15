@@ -6,13 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.gms.maps.model.LatLng
+import org.json.JSONObject
 import java.io.IOException
-import java.time.LocalDateTime
 
 class PostRent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +24,29 @@ class PostRent : AppCompatActivity() {
         val btnSingUp = findViewById<Button>(R.id.buttonSignIn)
 
         btnSingUp.setOnClickListener {
-            takeRent()
+            saveRent()
         }
+    }
+
+    private fun saveRent() {
+        val url = "http://luki-env-1.eba-2zc72njp.us-east-2.elasticbeanstalk.com/api/v1.0/rents"
+
+        val dataJSON = takeRent()
+
+        val json = JSONObject(dataJSON)
+
+        // Request a string response from the provided URL.
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, json,
+                Response.Listener {
+                    Toast.makeText(this, "Su apartamento ha sido publicado exitosamente", Toast.LENGTH_SHORT).show()
+                },
+                Response.ErrorListener {
+                    Toast.makeText(this, "Algo ha fallado: error 1245\nPor favor inténtalo más tarde", Toast.LENGTH_SHORT).show()
+                }
+        )
+
+        // Add the request to the RequestQueue.
+        queue.add(jsonObjectRequest)
     }
 
     /**
@@ -35,33 +58,35 @@ class PostRent : AppCompatActivity() {
         val txtState = findViewById<EditText>(R.id.txt_state)
         val txtCity = findViewById<EditText>(R.id.txt_city)
         val txtAddress = findViewById<EditText>(R.id.txt_address)
-        val txtBuilding_name = findViewById<EditText>(R.id.txt_buildingName)
-        val txtSocialstratum = findViewById<EditText>(R.id.txt_stratum)
+        val txtBuildingName = findViewById<EditText>(R.id.txt_buildingName)
+        val txtSocialStratum = findViewById<EditText>(R.id.txt_stratum)
         val txtPrice = findViewById<EditText>(R.id.txt_price)
-        val txtFloor_number = findViewById<EditText>(R.id.txt_floor)
+        val txtFloorNumber = findViewById<EditText>(R.id.txt_floor)
         val txtBedroom = findViewById<EditText>(R.id.txt_bedRooms)
         val txtBathroom = findViewById<EditText>(R.id.txt_bathRooms)
-        val txtParkinglot = findViewById<EditText>(R.id.txt_parking)
+        val txtParkingLot = findViewById<EditText>(R.id.txt_parking)
         val txtMt2 = findViewById<EditText>(R.id.txt_areaM2)
         val txtDescription = findViewById<EditText>(R.id.txt_desc)
 
         val state = txtState.text.toString()
         val city = txtCity.text.toString()
         val address = txtAddress.text.toString()
-        val buildingName = txtBuilding_name.text.toString()
-        val socialstratum = txtSocialstratum.text.toString()
-        val price = txtPrice.text.toString()
-        val floorNumber = txtFloor_number.text.toString()
-        val bedroom = txtBedroom.text.toString()
-        val bathroom = txtBathroom.text.toString()
-        val parkinglot = txtParkinglot.text.toString()
-        val mt2 = txtMt2.text.toString()
+        val buildingName = txtBuildingName.text.toString()
+
+        val socialStratum = validateEmpty(txtSocialStratum.text.toString())
+        val price = validateEmpty(txtPrice.text.toString())
+        val floorNumber = validateEmpty(txtFloorNumber.text.toString())
+        val bedroom = validateEmpty(txtBedroom.text.toString())
+        val bathroom = validateEmpty(txtBathroom.text.toString())
+        val parkingLot = validateEmpty(txtParkingLot.text.toString())
+        val mt2 = validateEmpty(txtMt2.text.toString())
+
         val desc = txtDescription.text.toString()
 
-        var location = getGeoLocation("$address, $city, $state")
+        val location = getGeoLocation("$address, $city, $state")
 
         val dict: MutableMap<String, Any> = mutableMapOf(
-                "stardate" to "2021-03-10",
+                "startdate" to "2021-03-10",
                 "enddate" to "2021-03-10",
                 "latitude" to location.latitude,
                 "longitude" to location.longitude,
@@ -70,13 +95,13 @@ class PostRent : AppCompatActivity() {
                 "city" to city,
                 "address" to address,
                 "building_name" to buildingName,
-                "socialstratum" to socialstratum,
-                "price" to price,
-                "floor_number" to floorNumber,
-                "bedroom" to bedroom,
-                "bathroom" to bathroom,
-                "parkinglot" to parkinglot,
-                "mt2" to mt2,
+                "socialstratum" to socialStratum.toInt(),
+                "price" to price.toBigInteger(),
+                "floor_number" to floorNumber.toInt(),
+                "bedroom" to bedroom.toInt(),
+                "bathroom" to bathroom.toInt(),
+                "parkinglot" to parkingLot.toInt(),
+                "mt2" to mt2.toInt(),
                 "description" to desc,
                 "property_of" to 1,
                 "sector_of" to 370,
@@ -106,9 +131,23 @@ class PostRent : AppCompatActivity() {
             e.printStackTrace()
         }
         val address = locat!![0]
-        val adressLatLng = LatLng(address.latitude, address.longitude)
 
-        return adressLatLng
+        return LatLng(address.latitude, address.longitude)
+    }
+
+    /**
+     * validateEmpty - Change the value to 0 if the string is empty
+     *
+     * [str]: The String to validate
+     *
+     * Return: the validated string
+     */
+    private fun validateEmpty(str: String): String {
+        if (str == "") {
+            return "0"
+        }
+
+        return str
     }
 
     // ====================== MENU ===================== //
