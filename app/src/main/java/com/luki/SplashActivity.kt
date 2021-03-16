@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             // This method will be executed once the timer is over
             // Start your app main activity
-            startActivity(Intent(this, MapsActivity::class.java))
+            startActivity(Intent(this, LukiOptions::class.java))
             // close this activity
             finish()
         }, splashTimeOut)
