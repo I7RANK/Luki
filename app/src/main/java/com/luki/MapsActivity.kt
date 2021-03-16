@@ -488,7 +488,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun addMark(lat: Double, lon: Double, tit: String = ""): Marker {
         val newPlace = LatLng(lat, lon)
 
-        return map.addMarker(MarkerOptions().position(newPlace).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)))
+        return map.addMarker(MarkerOptions().position(newPlace).title(tit).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_purple)))
     }
 
     /**

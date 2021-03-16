@@ -298,6 +298,7 @@
             android:layout_margin="16dp"
             android:contentDescription="@string/menu_options"
             android:src="@drawable/ic_baseline_menu_24"
+            app:backgroundTint="@color/secondary_purple"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:maxImageSize="24dp"
