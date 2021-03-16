@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Luki</string>
 
@@ -5,7 +6,7 @@
     <string name="title_activity_maps">Luki App</string>
     <string name="btn_post">Publicar</string>
 
-    <string name="titleSingUp">Registrate</string>
+    <string name="titleSingUp">Regístrate</string>
     <string name="buttonSingUp">Listo</string>
     <string name="inputTextName">Nombre</string>
     <string name="inputTextLastName">Apellido</string>
@@ -13,14 +14,14 @@
     <string name="inputTextEmail">Correo</string>
     <string name="titleSignIn">Bienvenido a Luki</string>
     <string name="password">Contraseña</string>
-    <string name="no_estas_registrado">¿No estas registrado?</string>
-    <string name="registrate">Registrate</string>
+    <string name="no_estas_registrado">¿No estás registrado?</string>
+    <string name="registrate">Regístrate</string>
 
     <string name="about">Acerca de</string>
-    <string name="exit">Exit</string>
+    <string name="exit">Salir</string>
     <string name="post">Publicar</string>
     <string name="about_message">
-        Luki es una app movil diseñada por participantes de holbertonschool en su ultimo trimestre,
+        Luki es una app móvil diseñada por participantes de Holberton School en su ultimo trimestre,
         esperamos que la disfrutes mucho!!
     </string>
     <string name="previous">previous</string>
@@ -44,44 +45,50 @@
     <string name="bathRooms">Baños</string>
     <string name="_1000000">1000000</string>
     <string name="format_1000000">1.000.000,00</string>
-    <string name="example_address">Calle 202 #89-45</string>
+    <string name="example_address">Calle 202 #89–45</string>
     <string name="area_m2">Área (m2)</string>
     <string name="bedRooms">Habitaciones</string>
     <string name="address">Dirección</string>
-    <string name="atlantico">Átlantico</string>
+    <string name="atlantico">Atlántico</string>
     <string name="Barranquilla">Barranquilla</string>
     <string name="sector">Barrio o sector</string>
     <string name="city">Ciudad</string>
-    <string name="estado">Estado</string>
+    <string name="estado">Departamento</string>
     <string name="price">Precio</string>
-    <string name="example_desc">Cerca a la vía principal, buena ubicacíon</string>
+    <string name="example_desc">Cerca a la vía principal, buena ubicación</string>
     <string name="select">Selecciona…</string>
-    <string name="desc">Descripcíon</string>
-    <string name="location">Ubicacíon</string>
+    <string name="desc">Descripción</string>
+    <string name="location">Ubicación</string>
     <string name="details">Detalles</string>
 
     <string name="rent">Arriendo</string>
-    <string name="img_contentDesc">Imagenes de la casa o apartamento</string>
+    <string name="img_contentDesc">Imágenes de la casa o apartamento</string>
     <string name="barranquilla_alto_prado">Barranquilla, Alto Prado</string>
     <string name="contact">Contacto</string>
     <string name="ex_300654321">300654321</string>
-    <string name="example_email">example@example.com</string>
+    <string name="example_email">ejemplo@ejemplo.com</string>
     <string name="floor">Piso</string>
     <string name="type">Tipo</string>
 
     <string name="ex_buildName">Edificio La Mar</string>
     <string name="building_name">Nombre del edificio</string>
-    <string name="img_header">Header image</string>
-    <string name="img_bottom">Bottom image</string>
+    <string name="img_header">Imagen de encabezado</string>
+    <string name="img_bottom">Imagen de bottom</string>
     <string name="title_post_rent">Publica tu renta</string>
     <string name="luki">LUKI</string>
     <string name="lukilogo">LukiLogo</string>
-    <string name="designed_by_target_devs">Designed by Target Devs</string>
+    <string name="designed_by_target_devs">Diseñado por Target Devs</string>
 
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_desc">Imagen de perfil</string>
     <string name="nav_header_title">Mauricio Contreras</string>
     <string name="nav_header_subtitle">1822@holbertonschool.com</string>
-    <string name="menu_options">menu options</string>
+    <string name="menu_options">Menu</string>
+    <string name="Luki_options_desc">
+        <big><b>Luki</b></big>
+        <small>está donde tú estás, escoge si necesitas buscar o publicar tu propiedad:</small>
+    </string>
+    <string name="quiero_publicar">Quiero Publicar</string>
+    <string name="luki_busqueda">Luki Búsqueda</string>
 </resources>
