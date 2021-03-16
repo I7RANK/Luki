@@ -40,7 +40,7 @@
             android:parentActivityName=".MapsActivity" />
         <activity
             android:name=".About"
-            android:label="@string/about_tittle"
+            android:label="@string/about"
             android:parentActivityName=".MapsActivity" />
         <activity
             android:name=".ShowInfo"

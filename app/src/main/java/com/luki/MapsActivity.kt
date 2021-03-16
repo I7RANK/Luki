@@ -568,7 +568,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             addMark(dict["latitude"] as Double, dict["longitude"] as Double, dict["price"].toString())
         }
-
-        Toast.makeText(this, "markers added: ${mainList.size}", Toast.LENGTH_SHORT).show()
     }
 }

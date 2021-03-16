@@ -9,7 +9,7 @@ import com.luki.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
     // This is the loading time of the splash screen
-    private val SPLASH_TIME_OUT:Long = 3000 // 1 sec
+    private val splashTimeOut:Long = 1000 // 1 sec
 
     private lateinit var binding: ActivitySplashBinding
 
@@ -24,6 +24,6 @@ class SplashActivity : AppCompatActivity() {
             startActivity(Intent(this, MapsActivity::class.java))
             // close this activity
             finish()
-        }, SPLASH_TIME_OUT)
+        }, splashTimeOut)
     }
 }
