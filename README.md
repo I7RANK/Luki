@@ -1,7 +1,13 @@
 # LUKI
 <img width="374" alt="luki" src="https://user-images.githubusercontent.com/66022141/110895923-8f0d0f80-82c8-11eb-8946-09dedf4a2247.png">
 
-Luki is a portfolio proyect.
+[Link to Luki API repository](https://github.com/LiliTa1762/luki_backend)
+
+We created an awesome mobile app, which enable users to find quickly rents while they are outside and in movement, using the Google Maps which it is updated in real time, and when the user selects a marker and post easily the properties without annoying intermediaries.
+
+Luki is different because you can use it everywhere, anytime and all day long, also everyone can post in it, you only have to log in and fill out the info of the apartment and the map will recognize the location and automatically will appear in the map with a marker.
+
+
 
 #### Functionalities:
 * Display a map that update your current location
