@@ -99,7 +99,12 @@
                             android:id="@+id/btn_closeRentInfo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginRight="4dp"
+                            android:background="@drawable/border_radius"
                             android:contentDescription="@string/exit"
+                            android:tint="#000000"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
@@ -126,7 +131,8 @@
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/rent_title"
-                            app:srcCompat="@android:mipmap/sym_def_app_icon" />
+                            android:scaleType="fitXY"
+                            app:srcCompat="@mipmap/apart01_foreground" />
 
                         <TextView
                             android:id="@+id/rent_price"
