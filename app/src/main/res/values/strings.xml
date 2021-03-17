@@ -46,7 +46,7 @@
     <string name="_1000000">1000000</string>
     <string name="format_1000000">1.000.000,00</string>
     <string name="example_address">Calle 202 #89–45</string>
-    <string name="area_m2">Área (m2)</string>
+    <string name="area_m2">Área</string>
     <string name="bedRooms">Habitaciones</string>
     <string name="address">Dirección</string>
     <string name="atlantico">Atlántico</string>

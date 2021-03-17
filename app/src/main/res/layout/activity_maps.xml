@@ -192,13 +192,13 @@
                                 android:gravity="center_vertical"
                                 android:text="@string/bedRooms"
                                 app:drawableLeftCompat="@drawable/baseline_hotel_24"
-                                app:layout_constraintEnd_toStartOf="@+id/textView13"
+                                app:layout_constraintEnd_toStartOf="@+id/rent_area"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView13"
+                                android:id="@+id/rent_area"
                                 android:layout_width="140dp"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
@@ -210,19 +210,19 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/rent_bedrooms2"
+                                android:id="@+id/rent_bathrooms"
                                 android:layout_width="140dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/bathRooms"
                                 app:drawableLeftCompat="@drawable/baseline_bathtub_24"
-                                app:layout_constraintEnd_toStartOf="@+id/textView13"
+                                app:layout_constraintEnd_toStartOf="@+id/rent_area"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/rent_bedrooms" />
 
                             <TextView
-                                android:id="@+id/textView14"
+                                android:id="@+id/rent_floor"
                                 android:layout_width="140dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
@@ -231,22 +231,22 @@
                                 app:drawableLeftCompat="@drawable/baseline_apartment_24"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/rent_bedrooms"
-                                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                                app:layout_constraintTop_toBottomOf="@+id/rent_area" />
 
                             <TextView
-                                android:id="@+id/rent_bedrooms3"
+                                android:id="@+id/rent_parking"
                                 android:layout_width="140dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/parking"
                                 app:drawableLeftCompat="@drawable/baseline_garage_24"
-                                app:layout_constraintEnd_toStartOf="@+id/textView13"
+                                app:layout_constraintEnd_toStartOf="@+id/rent_area"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/rent_bedrooms2" />
+                                app:layout_constraintTop_toBottomOf="@+id/rent_bathrooms" />
 
                             <TextView
-                                android:id="@+id/textView15"
+                                android:id="@+id/rent_stratum"
                                 android:layout_width="140dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
@@ -255,7 +255,7 @@
                                 app:drawableLeftCompat="@drawable/baseline_person_pin_circle_24"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/rent_bedrooms"
-                                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                                app:layout_constraintTop_toBottomOf="@+id/rent_floor" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
