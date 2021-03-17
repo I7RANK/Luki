@@ -49,12 +49,13 @@
                     android:layout_width="320dp"
                     android:layout_height="180dp"
                     android:layout_marginTop="8dp"
+                    android:scaleType="fitXY"
                     android:contentDescription="@string/img_contentDesc"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rent_title"
-                    app:srcCompat="@android:mipmap/sym_def_app_icon" />
+                    app:srcCompat="@mipmap/apart01_foreground" />
 
                 <TextView
                     android:id="@+id/rent_price"
