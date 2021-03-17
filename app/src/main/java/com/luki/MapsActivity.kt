@@ -11,10 +11,7 @@ import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.Switch
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -40,6 +37,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import org.json.JSONObject
+import java.text.DecimalFormat
 
 // GLOBAL VARIABLES
 private const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -335,7 +333,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         map.setOnMarkerClickListener { marker ->
             markTouched(marker)
-
+            chargeRentInfo(marker)
             showRentInfo(true)
 
             true
@@ -371,6 +369,60 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     private fun markTouched(marker: Marker) {
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position, 18.0f))
+    }
+
+    /**
+     * chargeRentInfo - Charges all rent info when the marker is touched
+     */
+    private fun chargeRentInfo(marker: Marker) {
+        val rentTitle = findViewById<TextView>(R.id.rent_title)
+        val rentPrice = findViewById<TextView>(R.id.rent_price)
+        // val rentType = findViewById<TextView>(R.id.rent_type)
+        // val rentCitySector = findViewById<TextView>(R.id.rent_city_sector)
+        val rentAddress = findViewById<TextView>(R.id.rent_address)
+        val rentBedrooms = findViewById<TextView>(R.id.rent_bedrooms)
+        val rentArea = findViewById<TextView>(R.id.rent_area)
+        val rentBathrooms = findViewById<TextView>(R.id.rent_bathrooms)
+        val rentFloor = findViewById<TextView>(R.id.rent_floor)
+        val rentParking = findViewById<TextView>(R.id.rent_parking)
+        val rentStratum = findViewById<TextView>(R.id.rent_stratum)
+        // val rentCell = findViewById<TextView>(R.id.rent_cell)
+        // val rentEmail = findViewById<TextView>(R.id.rent_email)
+
+        val markerDict = marker.tag as Map<*, *>
+
+        // Number formats
+        val priceF = DecimalFormat("#,###,###")
+        val singleF = DecimalFormat("#")
+
+        // value assignments
+        val strTitle = "Apartamento en ${markerDict["city"].toString()}"
+        rentTitle.text = strTitle
+        rentPrice.text = priceF.format(markerDict["price"])
+        // rentType.text = markerDict[""].toString()
+        // rentCitySector.text = markerDict[""].toString()
+        rentAddress.text = markerDict["address"].toString()
+
+        val strBed = "Cuartos ${singleF.format(markerDict["bedroom"])}"
+        rentBedrooms.text = strBed
+
+        val strArea = "Area ${singleF.format(markerDict["mt2"])}m²"
+        rentArea.text = strArea
+
+        val strBath = "Baños ${singleF.format(markerDict["bathroom"])}"
+        rentBathrooms.text = strBath
+
+        val strFloor = "Piso ${singleF.format(markerDict["floor_number"])}"
+        rentFloor.text = strFloor
+
+        val strParking = "Parqueaderos ${singleF.format(markerDict["parkinglot"])}"
+        rentParking.text = strParking
+
+        val strStratum = "Estrato ${singleF.format(markerDict["socialstratum"])}"
+        rentStratum.text = strStratum
+
+        // rentCell.text = markerDict[""].toString()
+        // rentEmail.text = markerDict[""].toString()
     }
 
     /**
@@ -566,7 +618,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         for (i in mainList) {
             val dict = i as Map<*, *>
 
-            addMark(dict["latitude"] as Double, dict["longitude"] as Double, dict["price"].toString())
+            val marker = addMark(dict["latitude"] as Double, dict["longitude"] as Double, dict["price"].toString())
+
+            marker.tag = dict
         }
     }
 }
