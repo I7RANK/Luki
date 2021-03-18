@@ -11,8 +11,8 @@
 
         <item
             android:id="@+id/itemConfiguration"
-            android:title="Configuracion"
-            android:icon="@drawable/ic_baseline_settings_24"/>
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="Configuración" />
 
         <item
             android:id="@+id/itemHelp"
