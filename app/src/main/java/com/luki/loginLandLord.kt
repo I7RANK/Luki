@@ -38,7 +38,7 @@ class LoginLandLord : AppCompatActivity() {
             val intent = Intent(this, SingUp::class.java)
             this.startActivity(intent)
         } else {
-            Toast.makeText(this, "False", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show()
         }
     }
 

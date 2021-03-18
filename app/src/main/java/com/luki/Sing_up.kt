@@ -44,7 +44,7 @@ class SingUp : AppCompatActivity() {
         // to JSON
         val strJSON = gson.toJson(dict)
 
-        Toast.makeText(this, strJSON, Toast.LENGTH_SHORT).show()
+        // Toast.makeText(this, strJSON, Toast.LENGTH_SHORT).show()
 
         // SEND POST REQUEST
 

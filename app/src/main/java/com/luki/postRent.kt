@@ -108,11 +108,7 @@ class PostRent : AppCompatActivity() {
                 "category_of" to 1
         )
 
-        val strJSON = gson.toJson(dict)
-
-        Toast.makeText(this, strJSON, Toast.LENGTH_SHORT).show()
-
-        return strJSON
+        return gson.toJson(dict)
     }
 
     /**
