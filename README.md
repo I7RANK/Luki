@@ -18,8 +18,10 @@ Luki is different because you can use it everywhere, anytime and all day long, a
 * You can find and post rentals
 * Shows a map that moves to where you are moving  
 <img src="https://user-images.githubusercontent.com/65993425/112252255-c4035580-8c2a-11eb-87b3-7fa82844e03f.jpeg" width="300" style="border: solid 2px #aaaaaa;"/>
+
 * The map shows markers that contain info about apartments  
 <img src="https://user-images.githubusercontent.com/65993425/112251592-923dbf00-8c29-11eb-9a29-54d0bc31dd38.png" width="300" style="border: solid 2px #aaaaaa;"/>
+
 * The "Modo libre" allows to navigate through the map  
 <img src="https://user-images.githubusercontent.com/65993425/112251277-f318c780-8c28-11eb-8e6b-e60f6f71ba00.jpg" width="300" style="border: solid 2px #aaaaaa;"/>
 
