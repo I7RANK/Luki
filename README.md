@@ -14,7 +14,7 @@ Luki is different because you can use it everywhere, anytime and all day long, a
 * [Bugs](#bugs)
 * [Authors](#authors)
 
-## Functionalities :gear::
+## Functionalities :gear:
 * You can find and post rentals
 * Shows a map that moves to where you are moving  
 <img src="https://user-images.githubusercontent.com/65993425/112252255-c4035580-8c2a-11eb-87b3-7fa82844e03f.jpeg" width="300" style="border: solid 2px #aaaaaa;"/>
@@ -37,7 +37,7 @@ This APP works on Android 4.1 and above
 No known bugs at this time. 
 
 ## Authors :busts_in_silhouette:
-Lilibeth Tabares - [Github :octocat:](https://github.com/LiliTa1762) / [Twitter](https://twitter.com/LilibethTabares)  / [Linkedin](https://www.linkedin.com/in/lilibeth-tabares/)  
-Mauricio Contreras - [Github :octocat:](https://github.com/mauroxcf) / [Twitter](https://twitter.com/MauroJCF)  / [Linkedin](https://www.linkedin.com/in/mauricio-contrerasf/)  
-Francisco Guzmán - [Github :octocat:](https://github.com/I7RANK) / [Twitter](https://twitter.com/I7RANKI)  / [Linkedin](https://www.linkedin.com/in/francisco-guzman-herrera/)  
-Jose Parrales - [Github :octocat:](https://github.com/JParrales) / [Twitter](https://twitter.com/JParrales7)  / [Linkedin](https://www.linkedin.com/in/jparrales/)  
+Lilibeth Tabares - [Github :octocat:](https://github.com/LiliTa1762) - [Twitter](https://twitter.com/LilibethTabares) - [Linkedin](https://www.linkedin.com/in/lilibeth-tabares/)  
+Mauricio Contreras - [Github :octocat:](https://github.com/mauroxcf) - [Twitter](https://twitter.com/MauroJCF) - [Linkedin](https://www.linkedin.com/in/mauricio-contrerasf/)  
+Francisco Guzmán - [Github :octocat:](https://github.com/I7RANK) - [Twitter](https://twitter.com/I7RANKI)  / [Linkedin](https://www.linkedin.com/in/francisco-guzman-herrera/)  
+Jose Parrales - [Github :octocat:](https://github.com/JParrales) - [Twitter](https://twitter.com/JParrales7) - [Linkedin](https://www.linkedin.com/in/jparrales/)  
