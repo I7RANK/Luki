@@ -1,5 +1,5 @@
 # LUKI
-<img width="374" alt="luki" src="https://user-images.githubusercontent.com/66022141/110895923-8f0d0f80-82c8-11eb-8946-09dedf4a2247.png">
+<img width="374" alt="luki" src="https://user-images.githubusercontent.com/65993425/112252659-881cc000-8c2b-11eb-9bb0-b2a266e5dac0.png" style="border-radius: 15%;"/>  
 
 [Link to Luki API repository](https://github.com/LiliTa1762/luki_backend)
 
@@ -7,18 +7,21 @@ We created an awesome mobile app, which enable users to find quickly rents while
 
 Luki is different because you can use it everywhere, anytime and all day long, also everyone can post in it, you only have to log in and fill out the info of the apartment and the map will recognize the location and automatically will appear in the map with a marker.
 
-
-
-#### Functionalities:
-* Display a map that update your current location
-* The map shows markers that contain info about apartments
-* The "modo libre" allows to navigate through the map
-
 ## Table of Content
+* [Functionalities](#functionalities)
 * [Environment](#environment)
 * [Installation](#installation)
 * [Bugs](#bugs)
 * [Authors](#authors)
+
+## Functionalities:
+* You can find and post rentals
+* Shows a map that moves to where you are moving  
+<img src="https://user-images.githubusercontent.com/65993425/112252255-c4035580-8c2a-11eb-87b3-7fa82844e03f.jpeg" width="300" style="border: solid 2px #aaaaaa;"/>
+* The map shows markers that contain info about apartments  
+<img src="https://user-images.githubusercontent.com/65993425/112251592-923dbf00-8c29-11eb-9a29-54d0bc31dd38.png" width="300" style="border: solid 2px #aaaaaa;"/>
+* The "Modo libre" allows to navigate through the map  
+<img src="https://user-images.githubusercontent.com/65993425/112251277-f318c780-8c28-11eb-8e6b-e60f6f71ba00.jpg" width="300" style="border: solid 2px #aaaaaa;"/>
 
 ## Environment
 This APP works on Android 4.1 and above
@@ -34,8 +37,7 @@ This APP works on Android 4.1 and above
 No known bugs at this time. 
 
 ## Authors
-Lilibeth Tabares - [Github](https://github.com/LiliTa1762) / [Twitter](https://twitter.com/LilibethTabares)  
-Mauricio Contreras - [Github](https://github.com/mauroxcf) / [Twitter](https://twitter.com/MauroJCF)  
-Francisco Guzman - [Github](https://github.com/I7RANK) / [Twitter](https://twitter.com/I7RANKI)  
-Jose Parrales - [Github](https://github.com/JParrales) / [Twitter](https://twitter.com/JParrales7)
-
+Lilibeth Tabares - [Github](https://github.com/LiliTa1762) / [Twitter](https://twitter.com/LilibethTabares)  / [Linkedin](https://www.linkedin.com/in/lilibeth-tabares/)  
+Mauricio Contreras - [Github](https://github.com/mauroxcf) / [Twitter](https://twitter.com/MauroJCF)  / [Linkedin](https://www.linkedin.com/in/mauricio-contrerasf/)  
+Francisco Guzmán - [Github](https://github.com/I7RANK) / [Twitter](https://twitter.com/I7RANKI)  / [Linkedin](https://www.linkedin.com/in/francisco-guzman-herrera/)  
+Jose Parrales - [Github](https://github.com/JParrales) / [Twitter](https://twitter.com/JParrales7)  / [Linkedin](https://www.linkedin.com/in/jparrales/)  
