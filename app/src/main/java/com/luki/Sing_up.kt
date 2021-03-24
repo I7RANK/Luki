@@ -16,10 +16,13 @@ class SingUp : AppCompatActivity() {
         setContentView(R.layout.landlord_sign_up)
 
         val btnSingUp = findViewById<Button>(R.id.buttonSignUp)
-
         btnSingUp.setOnClickListener { checkSingUP(it) }
     }
 
+    /**
+     * checkSingUP - save all the input data of the SingUp form in a array
+     * the array is converted into Json
+     */
     private fun checkSingUP(btn: View) {
         val txtName = findViewById<EditText>(R.id.editTextName)
         val txtLastName = findViewById<EditText>(R.id.editTextLastName)
@@ -44,11 +47,9 @@ class SingUp : AppCompatActivity() {
         // to JSON
         val strJSON = gson.toJson(dict)
 
-        // Toast.makeText(this, strJSON, Toast.LENGTH_SHORT).show()
-
         // SEND POST REQUEST
 
-        // go to post_rent.xml
+        // go to postRent activity
         val intent = Intent(this, PostRent::class.java)
         this.startActivity(intent)
     }

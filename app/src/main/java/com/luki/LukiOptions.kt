@@ -14,6 +14,11 @@ class LukiOptions: AppCompatActivity() {
         binding = LukiOptionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /**
+         * button selection if the user click on "Luki busqueda" or "Quiero publicar"
+         * @button "Luki busqueda" - send the user to the Map
+         * @button "Quiero publicar" - send the user to the login landlod screen
+         */
         binding.button.setOnClickListener {
             val intent = Intent(this, LoginLandLord::class.java)
             startActivity(intent)
