@@ -37,6 +37,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import org.json.JSONObject
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileNotFoundException
 import java.text.DecimalFormat
 
 // GLOBAL VARIABLES
@@ -557,18 +560,36 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     /* ================ REQUESTS =================== */
+    /**
+     * getRents - Makes the requests to get the data in JSON format
+     */
     private fun getRents() {
 
-        val url = "http://luki-env-1.eba-2zc72njp.us-east-2.elasticbeanstalk.com/api/v1.0/rents"
+        // val url = "http://luki-env-1.eba-2zc72njp.us-east-2.elasticbeanstalk.com/api/v1.0/rents"
+        val url = "https://raw.githubusercontent.com/I7RANK/Luki/master/rents.json"
 
         // Request a string response from the provided URL.
         val stringRequest = StringRequest(
             Request.Method.GET, url,
                 { response ->
-                    getJSONRents(response.toString())
+                    removeFile("rents.json")
 
-                }, {
-                    Toast.makeText(this, "FAIL ALL RENTS REQUEST", Toast.LENGTH_SHORT).show()
+                    val newFile = createFile("rents.json")
+
+                    newFile.appendText(response.toString())
+                    getJSONRents(response.toString())
+                },
+                {
+                    val rentsData = readFile("rents.json")
+
+                    if (rentsData == null) {
+                        val msg = "No es posible cargar los datos en este momento"
+                        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                    } else {
+                        val msg = "datos cargados del local"
+                        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                        getJSONRents(rentsData.toString())
+                    }
                 }
         )
 
@@ -576,6 +597,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         queue.add(stringRequest)
     }
 
+    /**
+     * getJSONRents - transforms the plain text to JSONObject and puts the markers in the map
+     *
+     * [res]: the plaint text to transform
+     */
     private fun getJSONRents(res: String) {
         val mainDict = JSONObject(res)
 
@@ -588,5 +614,50 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             marker.tag = dict
         }
+    }
+
+    /**
+     * readFile - Reads a file in the "files" directory of the luki directory
+     *
+     * [filename]: the file name to read
+     *
+     * Return: the plain text in the file
+     */
+    private fun readFile(filename: String): String? {
+        val path =  this.getExternalFilesDir(null)?.absolutePath.toString()
+        return try {
+            val file = File("$path/$filename")
+            FileInputStream(file).bufferedReader().use { it.readText() }
+        } catch (e: FileNotFoundException) {
+            null
+        }
+    }
+
+    /**
+     * createFile - creates an file
+     *
+     * [filename]: file name of the file to create
+     *
+     * Return: the file created
+     */
+    private fun createFile(filename: String): File {
+        val path =  this.getExternalFilesDir(null)?.absolutePath.toString()
+        val file = File("$path/$filename")
+
+        file.createNewFile() // Creates file
+
+        return file
+    }
+
+    /**
+     * removeFile - removes an file
+     *
+     * [filename]: the file to delete
+     */
+    private fun removeFile(filename: String) {
+        val path =  this.getExternalFilesDir(null)?.absolutePath.toString()
+        val file = File("$path/$filename")
+
+        file.delete()
     }
 }
