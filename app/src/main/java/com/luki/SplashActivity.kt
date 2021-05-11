@@ -8,6 +8,9 @@ import android.os.Looper
 import com.luki.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
+    /**
+     * This activity only works to display the intro screen of the app
+     */
     // This is the loading time of the splash screen
     private val splashTimeOut:Long = 1000 // 1 sec
 
@@ -18,6 +21,7 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //handle the display time of the screen to move to the next one
         Handler(Looper.getMainLooper()).postDelayed({
             // This method will be executed once the timer is over
             // Start your app main activity

@@ -17,7 +17,7 @@ class LoginLandLord : AppCompatActivity() {
         setContentView(R.layout.landlord_sign_in)
 
         val btnSingIn = findViewById<Button>(R.id.buttonSignIn)
-        // añadir el acceso a registrarse en luki
+        // Registration on luki
         val registerBtn = findViewById<TextView>(R.id.registre)
         registerBtn.setOnClickListener() {
             val intent = Intent(this, SingUp::class.java)
@@ -27,6 +27,10 @@ class LoginLandLord : AppCompatActivity() {
         btnSingIn.setOnClickListener { checkLogin(it) }
     }
 
+    /**
+     * checkLogin - save all the input data of the Login form in a array
+     * the array data is used to login in Luki
+     */
     private fun checkLogin(btn: View) {
         val txtEmail = findViewById<EditText>(R.id.editTextEmail_signIn)
         val txtPass = findViewById<EditText>(R.id.editTextPassword_signIn)

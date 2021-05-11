@@ -21,8 +21,8 @@ class PostRent : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.post_rent)
 
+        // setup the SingUp button
         val btnSingUp = findViewById<Button>(R.id.buttonSignIn)
-
         btnSingUp.setOnClickListener {
             saveRent()
         }
@@ -37,10 +37,10 @@ class PostRent : AppCompatActivity() {
 
         // Request a string response from the provided URL.
         val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, json,
-                Response.Listener {
+                {
                     Toast.makeText(this, "Su apartamento ha sido publicado exitosamente", Toast.LENGTH_SHORT).show()
                 },
-                Response.ErrorListener {
+                {
                     Toast.makeText(this, "Algo ha fallado: error 1245\nPor favor inténtalo más tarde", Toast.LENGTH_SHORT).show()
                 }
         )
@@ -81,10 +81,13 @@ class PostRent : AppCompatActivity() {
         val parkingLot = validateEmpty(txtParkingLot.text.toString())
         val mt2 = validateEmpty(txtMt2.text.toString())
 
+        //save the description text in the variable
         val desc = txtDescription.text.toString()
 
+        //get the latitude and longitude of the full address using getGeoLocation
         val location = getGeoLocation("$address, $city, $state")
 
+        // setup the data that contain the user information
         val dict: MutableMap<String, Any> = mutableMapOf(
                 "startdate" to "2021-03-10",
                 "enddate" to "2021-03-10",
@@ -108,6 +111,7 @@ class PostRent : AppCompatActivity() {
                 "category_of" to 1
         )
 
+        //convert the data to Json
         return gson.toJson(dict)
     }
 

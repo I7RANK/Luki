@@ -345,7 +345,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // activates the zoom buttons
         // map.uiSettings.isZoomControlsEnabled = true
 
-        // brujula
+        // Compass
         map.uiSettings.isCompassEnabled = true
 
         // tool bar default in true show when touch a marker
@@ -377,8 +377,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun chargeRentInfo(marker: Marker) {
         val rentTitle = findViewById<TextView>(R.id.rent_title)
         val rentPrice = findViewById<TextView>(R.id.rent_price)
-        // val rentType = findViewById<TextView>(R.id.rent_type)
-        // val rentCitySector = findViewById<TextView>(R.id.rent_city_sector)
         val rentAddress = findViewById<TextView>(R.id.rent_address)
         val rentBedrooms = findViewById<TextView>(R.id.rent_bedrooms)
         val rentArea = findViewById<TextView>(R.id.rent_area)
@@ -386,8 +384,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val rentFloor = findViewById<TextView>(R.id.rent_floor)
         val rentParking = findViewById<TextView>(R.id.rent_parking)
         val rentStratum = findViewById<TextView>(R.id.rent_stratum)
-        // val rentCell = findViewById<TextView>(R.id.rent_cell)
-        // val rentEmail = findViewById<TextView>(R.id.rent_email)
 
         val markerDict = marker.tag as Map<*, *>
 
@@ -399,8 +395,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val strTitle = "Apartamento en ${markerDict["city"].toString()}"
         rentTitle.text = strTitle
         rentPrice.text = priceF.format(markerDict["price"])
-        // rentType.text = markerDict[""].toString()
-        // rentCitySector.text = markerDict[""].toString()
+
         rentAddress.text = markerDict["address"].toString()
 
         val strBed = "Cuartos ${singleF.format(markerDict["bedroom"])}"
@@ -421,8 +416,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val strStratum = "Estrato ${singleF.format(markerDict["socialstratum"])}"
         rentStratum.text = strStratum
 
-        // rentCell.text = markerDict[""].toString()
-        // rentEmail.text = markerDict[""].toString()
     }
 
     /**
@@ -472,21 +465,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapValueAnimator.start()
         rentInfoValueAnimator.start()
 
-        /**
-         * Without animation
-         *
-         * // set current layout to currentParams like ConstraintLayout.LayoutParams
-         * val mapParams = mapView.layoutParams as ConstraintLayout.LayoutParams
-         * val infoRentParams = rentConstraint.layoutParams as ConstraintLayout.LayoutParams
-         *
-         * // change only percent height
-         * mapParams.matchConstraintPercentHeight = 0.35.toFloat()
-         * infoRentParams.matchConstraintPercentHeight = 0.65.toFloat()
-         *
-         * // set again
-         * mapView.layoutParams = mapParams
-         * rentConstraint.layoutParams = infoRentParams
-         */
     }
 
     /**
@@ -564,18 +542,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     // ====================== MENU ===================== //
-    /**
-     * onCreateOptionsMenu - Initialize the contents of the Activity's standard options menu
-     * this function doesn't mutate the option selected
-     *
-     * [menu]: the menu object
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.nav_drawer_menu, menu)
-        return true
-    }
-     */
 
     /**
      * onOptionsItemSelected - this functions allow os to atc on menu items
@@ -592,7 +558,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     /* ================ REQUESTS =================== */
     private fun getRents() {
-        // val url = "http://lukiapp-env.eba-hh3egugp.us-east-2.elasticbeanstalk.com/api/v1.0/landlord/1"
+
         val url = "http://luki-env-1.eba-2zc72njp.us-east-2.elasticbeanstalk.com/api/v1.0/rents"
 
         // Request a string response from the provided URL.
